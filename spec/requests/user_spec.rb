@@ -45,3 +45,40 @@ describe "Retrieve a specfic user" do
     end
   end
 end
+
+describe "Create a user with valid credentials" do
+  describe "POST #create" do
+    it "creates a new user" do
+      user_params = {first_name: "John", last_name: "Doe", email: "john@example.com",
+                     social_security_number: "111111111"}
+
+      post "/users", user: user_params
+
+      expect(response).to have_http_status(:created)
+
+      parsed_response = JSON.parse(response.body)
+
+      expect(parsed_response["first_name"]).to eq(user_params[:first_name])
+      expect(parsed_response["last_name"]).to eq(user_params[:last_name])
+      expect(parsed_response["email"]).to eq(user_params[:email])
+      expect(parsed_response["social_security_number"]).to eq(user_params[:social_security_number])
+    end
+  end
+end
+
+describe "Create a user with invalid credentials" do
+  describe "POST #create" do
+    it "returns an error message" do
+      invalid_user_params = {first_name: "John", last_name: "Doe", email: "john@example.com",
+                     social_security_number: "111"}
+
+      post "/users", user: invalid_user_params
+
+      expect(response.status).to eq(400)
+
+      parsed_response = JSON.parse(response.body)
+
+      expect(parsed_response["errors"][0]).to eq("Social security number is not valid")
+    end
+  end
+end
