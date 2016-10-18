@@ -16,11 +16,10 @@ describe "Retrieve all users" do
       expect(parsed_response[0]["first_name"]).to eq(user_one.first_name)
       expect(parsed_response[0]["last_name"]).to eq(user_one.last_name)
       expect(parsed_response[0]["email"]).to eq(user_one.email)
-      expect(parsed_response[0]["social_security_number"]).to eq(user_one.social_security_number)
+
       expect(parsed_response[1]["first_name"]).to eq(user_two.first_name)
       expect(parsed_response[1]["last_name"]).to eq(user_two.last_name)
       expect(parsed_response[1]["email"]).to eq(user_two.email)
-      expect(parsed_response[1]["social_security_number"]).to eq(user_two.social_security_number)
     end
   end
 end
@@ -41,7 +40,6 @@ describe "Retrieve a specfic user" do
       expect(parsed_response["first_name"]).to eq(user_one.first_name)
       expect(parsed_response["last_name"]).to eq(user_one.last_name)
       expect(parsed_response["email"]).to eq(user_one.email)
-      expect(parsed_response["social_security_number"]).to eq(user_one.social_security_number)
     end
   end
 end
@@ -61,7 +59,6 @@ describe "Create a user with valid credentials" do
       expect(parsed_response["first_name"]).to eq(user_params[:first_name])
       expect(parsed_response["last_name"]).to eq(user_params[:last_name])
       expect(parsed_response["email"]).to eq(user_params[:email])
-      expect(parsed_response["social_security_number"]).to eq(user_params[:social_security_number])
     end
   end
 end
@@ -70,7 +67,7 @@ describe "Create a user with invalid credentials" do
   describe "POST #create" do
     it "returns an error message" do
       invalid_user_params = {first_name: "John", last_name: "Doe", email: "john@example.com",
-                     social_security_number: "111"}
+                             social_security_number: "111"}
 
       post "/users", user: invalid_user_params
 
@@ -78,7 +75,7 @@ describe "Create a user with invalid credentials" do
 
       parsed_response = JSON.parse(response.body)
 
-      expect(parsed_response["errors"][0]).to eq("Social security number is the wrong length (should be 9 characters)")
+      expect(parsed_response["errors"][0]).to eq("Social security number is invalid")
     end
   end
 end
