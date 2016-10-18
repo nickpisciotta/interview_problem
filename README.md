@@ -24,6 +24,13 @@
   bundle
   rake db:setup
   ```
+#### To runt tests: 
+  * From root directory, run command:
+  
+  ```
+  rspec
+  ```
+  
 #### Available Record Endpoints:
 
   The following API endpoints for User are available:
@@ -38,4 +45,4 @@
 
   Create User:
 
-      POST "/users" params: {first_name:, last_name:, email:, social_security_number:}
+    POST "/users" params: {first_name:, last_name:, email:, social_security_number:}
