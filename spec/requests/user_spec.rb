@@ -3,10 +3,8 @@ require 'rails_helper'
 describe "Retrieve all users" do
   describe "GET #index" do
     it "returns all users" do
-      user_one =  User.create(first_name: "John", last_name: "Doe",
-                              email: "john@example.com", social_security_number: "111111111")
-      user_two =  User.create(first_name: "Jane", last_name: "Doe",
-                              email: "john@example.com", social_security_number: "111111111")
+      user_one =  create_first_user                        email: "john@example.com", social_security_number: "111111111")
+      user_two =  create_second_user
 
       get "/users"
 
@@ -26,3 +24,11 @@ describe "Retrieve all users" do
     end
   end
 end
+
+# describe "Retrieve a specfic user" do
+#   describe "GET #show" do
+#     it "returns one user" do
+#
+#     end
+#   end
+# end
