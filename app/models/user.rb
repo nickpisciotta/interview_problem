@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     format:  {with: /@/,
                               message: "Invalid Email" }
-  validates :social_security_number, presence: true, 
+  validates :social_security_number, presence: true,
                                      length: { is: 9}
 end
