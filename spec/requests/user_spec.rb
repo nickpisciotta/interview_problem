@@ -78,7 +78,7 @@ describe "Create a user with invalid credentials" do
 
       parsed_response = JSON.parse(response.body)
 
-      expect(parsed_response["errors"][0]).to eq("Social security number is not valid")
+      expect(parsed_response["errors"][0]).to eq("Social security number is the wrong length (should be 9 characters)")
     end
   end
 end
