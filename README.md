@@ -24,7 +24,7 @@
   bundle
   rake db:setup
   ```
-#### To runt tests: 
+#### To run tests: 
   * From root directory, run command:
   
   ```
