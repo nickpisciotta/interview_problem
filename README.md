@@ -24,7 +24,7 @@
   bundle
   rake db:setup
   ```
-  #### Available Record Endpoints:
+#### Available Record Endpoints:
 
   The following API endpoints for User are available:
 
