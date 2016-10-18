@@ -6,7 +6,7 @@ describe "Retrieve all users" do
       user_one =  User.create(first_name: "John", last_name: "Doe",
                               email: "john@example.com", social_security_number: "111111111")
       user_two =  User.create(first_name: "Jane", last_name: "Doe",
-                              email: "john@example.com", social_security_number: "1111111111")
+                              email: "john@example.com", social_security_number: "111111111")
 
       get "/users"
 
