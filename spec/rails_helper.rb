@@ -8,6 +8,17 @@ require 'rspec/rails'
 require 'database_cleaner'
 
 
+def create_first_user
+  User.create(first_name: "John", last_name: "Doe",
+              email: "john@example.com", social_security_number: "111111111")
+end
+
+def create_second_user
+  User.create(first_name: "Jane", last_name: "Doe",
+               email: "john@example.com", social_security_number: "111111111")
+end
+
+
 DatabaseCleaner.strategy = :truncation
 # Add additional requires below this line. Rails is not loaded until this point!
 
